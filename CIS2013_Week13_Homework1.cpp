@@ -9,10 +9,20 @@ class BankAccount {
 		int balance;
 		
 		void deposit(int x){
+			
+			cout << "How much money do you want to deposit? " << endl;
+			cin >> x;
+			cout << endl;
 			balance += x;
+			cout << "Balance on your account is " << balance << endl;
 		}
 		void withdraw(int y){
+						
+			cout <<"How much money do you want to withdraw? " << endl;
+			cin >> y;
+			cout << endl;
 			balance -= y;
+			cout << "Balance on your account is " << balance << endl;
 		}
 		BankAccount(){
 			string nm = "Anonymous";
@@ -53,15 +63,21 @@ class Savings: public BankAccount {
 			withdraw_limit = 100;
 		}
 		void withdraw(int y){
+			cout <<"How much money do you want to withdraw? " << endl;
+			cin >> y;
+			cout << endl;
+			balance -= y;
+			
 			if(y < withdraw_limit){
 				// balance -= y;
-				if(balance <minimum_balance){
+				if(balance < minimum_balance){
 					cout << "Warning: You are below your minimum balance." << endl;
 				}
 			} else {
 				cout << "You are only allowed to withdraw " << withdraw_limit <<
 					" from this account. Transaction terminated." << endl;
 			}
+			cout << "Balance on your account is " << balance << endl;
 		}
 		
 	private:
@@ -109,22 +125,88 @@ int main(){
 	cin >> name >> phone;
 		
 	cout << "You can open a new bank account.  "<< endl;
-	
+	Savings newS (name, phone);
+	Checking newC (name, phone);
 	
 	
 	do {
 	cout << " " << endl;
-	cout << "Would you like to open Saving or Checking account?" <<endl;
+	cout << "Would you like to work with your Savings or Checking account?" <<endl;
 	cin >> accnt;
 	cout << " " << endl;
 	if (accnt == "Savings" || accnt == "savings") {
-		Savings newS (name, phone);
+		//Savings newS (name, phone);
 		cout << "Savings account created. ";
+		
+		do {
+	cout << " " << endl;
+	cout << "Select an action with your Savings account: " << endl;
+	cout << " " << endl;
+	cout << "Make a deposit (d) "<< endl;
+	cout << "Withdraw money (w) " << endl;
+	cout << "Print total balance (p) " << endl;
+	//cout << "Log out of the account (E) " << endl;
+	
+	cout << " " << endl;
+	cout << "Your choice is : ";
+	cin >> choice;
+	if (choice == 'd') {
+		newS.deposit (d);
+	} else if (choice == 'w'){
+		newS.withdraw (w);
+	} else if (choice == 'p') {
+		newS.print ();
+			
+	} else {
+		cout << "Illegal value.";
+	}
+	
+	cout << "		*****		" << endl; 
+	cout << "Continue with this account? (y=1/n=0) " << endl;
+	cin >> ans;
+	if (ans!=1)
 		break;
+	
+		
+	}
+	while (ans=1); 
+		
 	} else if (accnt == "Checking" || accnt == "checking") {
-		Checking newC (name, phone);
+		//Checking newC (name, phone);
 		cout << "Checking account created. ";
+		
+		do {
+	cout << " " << endl;
+	cout << "Select an action with your Checking account: " << endl;
+	cout << " " << endl;
+	cout << "Make a deposit (d) "<< endl;
+	cout << "Withdraw money (w) " << endl;
+	cout << "Print total balance (p) " << endl;
+	//cout << "Log out of the account (E) " << endl;
+	
+	cout << " " << endl;
+	cout << "Your choice is : ";
+	cin >> choice;
+	if (choice == 'd') {
+		newC.deposit (d);
+	} else if (choice == 'w'){
+		newC.withdraw (w);
+	} else if (choice == 'p') {
+		newC.print ();
+			
+	} else {
+		cout << "Illegal value.";
+	}
+	
+	cout << "		*****		" << endl; 
+	cout << "Continue with this account? (y=1/n=0) " << endl;
+	cin >> ans;
+	if (ans!=1)
 		break;
+	
+	}
+	while (ans=1); 
+		
 	} else {
 		cout << "Misspelled, try again ";
 		cout << " " << endl;
@@ -132,51 +214,7 @@ int main(){
 	}
 	while (1);
 	
-	do {
-	cout << " " << endl;
-	cout << "Select an action with your account: " << endl;
-	cout << " " << endl;
-	cout << "Make a deposit (d) "<< endl;
-	cout << "Withdraw money (w) " << endl;
-	cout << "Print total balance (p) " << endl;
-	cout << "Log out of the account (E) " << endl;
 	
-	cout << " " << endl;
-	cout << "Your choice is : ";
-	cin >> choice;
-		switch (choice)
-		{
-		case 'd' :
-			if (accnt== "Savings" || accnt== "savings") {
-			newS.deposit ();
-			} else if (accnt="Checking" || accnt== "checking") {
-			newC.deposit ();
-			}
-		break;
-		case 'w' :
-			if (accnt=="Savings" || accnt== "savings") {
-			newS.withdraw ();
-			} else if (accnt="Checking" || accnt== "checking") {
-			newC.withdraw ();
-			}
-		break;
-		case 'p' :
-			if (accnt=="Savings" || accnt== "savings") {
-			newS.print ();
-			} else if (accnt=="Checking" || accnt== "checking") {
-			newC.print ();
-			}
-				break;
-		case 'E' :
-		exit (1);
-		break;
-				
-		default : 
-		cout << "Illegal value.";
-		}
-		
-	}
-	while (ans=1);
 	
 	return 0;
 }
