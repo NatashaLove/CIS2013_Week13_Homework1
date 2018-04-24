@@ -46,7 +46,7 @@ class BankAccount {
 		
 	private:
 		string name;
-		string acct_numb;
+		int acct_numb;
 		string phone;
 		
 		float rate;
