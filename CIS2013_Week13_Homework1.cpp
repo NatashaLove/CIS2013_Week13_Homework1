@@ -110,18 +110,27 @@ int main(){
 		
 	cout << "You can open a new bank account.  "<< endl;
 	
+	
+	
+	do {
+	cout << " " << endl;
 	cout << "Would you like to open Saving or Checking account?" <<endl;
 	cin >> accnt;
 	cout << " " << endl;
-	if (accnt=="Savings" || "savings") {
+	if (accnt == "Savings" || accnt == "savings") {
 		Savings newS (name, phone);
 		cout << "Savings account created. ";
-	} else if (accnt=="Checking" || "checking") {
+		break;
+	} else if (accnt == "Checking" || accnt == "checking") {
 		Checking newC (name, phone);
 		cout << "Checking account created. ";
+		break;
 	} else {
 		cout << "Misspelled, try again ";
+		cout << " " << endl;
 	}
+	}
+	while (1);
 	
 	do {
 	cout << " " << endl;
@@ -135,26 +144,26 @@ int main(){
 	cout << " " << endl;
 	cout << "Your choice is : ";
 	cin >> choice;
-	/*	switch (choice)
+		switch (choice)
 		{
 		case 'd' :
-			if (accnt=="Savings" || "savings") {
+			if (accnt== "Savings" || accnt== "savings") {
 			newS.deposit ();
-			} else if (accnt="Checking" || "checking") {
+			} else if (accnt="Checking" || accnt== "checking") {
 			newC.deposit ();
 			}
 		break;
 		case 'w' :
-			if (accnt=="Savings" || "savings") {
+			if (accnt=="Savings" || accnt== "savings") {
 			newS.withdraw ();
-			} else if (accnt="Checking" || "checking") {
+			} else if (accnt="Checking" || accnt== "checking") {
 			newC.withdraw ();
 			}
 		break;
 		case 'p' :
-			if (accnt=="Savings" || "savings") {
+			if (accnt=="Savings" || accnt== "savings") {
 			newS.print ();
-			} else if (accnt=="Checking" || "checking") {
+			} else if (accnt=="Checking" || accnt== "checking") {
 			newC.print ();
 			}
 				break;
@@ -165,7 +174,7 @@ int main(){
 		default : 
 		cout << "Illegal value.";
 		}
-		*/
+		
 	}
 	while (ans=1);
 	
