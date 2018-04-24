@@ -33,7 +33,7 @@ class BankAccount {
 			rate = 5.0;
 			name = n;
 			phone = p;
-			acct_numb = number++;
+			acct_numb = ++number;
 			balance = 0;
 		}
 		void print(){
@@ -68,14 +68,15 @@ class Savings: public BankAccount {
 			cout << endl;
 			balance -= y;
 			
-			if(y < withdraw_limit){
+			if(y <= withdraw_limit){
 				// balance -= y;
 				if(balance < minimum_balance){
 					cout << "Warning: You are below your minimum balance." << endl;
 				}
 			} else {
 				cout << "You are only allowed to withdraw " << withdraw_limit <<
-					" from this account. Transaction terminated." << endl;
+					"$ maximum from this account. Transaction terminated." << endl;
+				balance += y;	
 			}
 			cout << "Balance on your account is " << balance << endl;
 		}
@@ -89,8 +90,25 @@ class Checking : public BankAccount {
 	public:
 		
 		Checking(string n, string p):BankAccount(n,p){
-			overdraft_fee = 25;
+			int overdraft_fee = 25;
 		}
+		
+		void withdraw(int y){
+			int overdraft_fee = 25;
+			cout <<"How much money do you want to withdraw? " << endl;
+			cin >> y;
+			cout << endl;
+			balance -= y;
+			
+			if (balance < 0) {
+			cout << "Warning!!! Your balance is below 0! " << endl;
+			cout << " Your fee is " << overdraft_fee << endl;
+			balance -= overdraft_fee;
+			//cout << " Your balance now is "<< balance << endl;
+			}
+			cout << " Your balance now is "<< balance << endl;
+		}
+		
 	private:
 		int overdraft_fee;
 };
@@ -145,7 +163,7 @@ int main(){
 	cout << "Make a deposit (d) "<< endl;
 	cout << "Withdraw money (w) " << endl;
 	cout << "Print total balance (p) " << endl;
-	//cout << "Log out of the account (E) " << endl;
+	cout << "Log out of the account (E) " << endl;
 	
 	cout << " " << endl;
 	cout << "Your choice is : ";
@@ -157,6 +175,8 @@ int main(){
 	} else if (choice == 'p') {
 		newS.print ();
 			
+	} else if (choice == 'E') {
+		exit (1);
 	} else {
 		cout << "Illegal value.";
 	}
@@ -182,7 +202,7 @@ int main(){
 	cout << "Make a deposit (d) "<< endl;
 	cout << "Withdraw money (w) " << endl;
 	cout << "Print total balance (p) " << endl;
-	//cout << "Log out of the account (E) " << endl;
+	cout << "Log out of the account (E) " << endl;
 	
 	cout << " " << endl;
 	cout << "Your choice is : ";
@@ -194,6 +214,8 @@ int main(){
 	} else if (choice == 'p') {
 		newC.print ();
 			
+	} else if (choice == 'E') {
+		exit (1);
 	} else {
 		cout << "Illegal value.";
 	}
