@@ -14,7 +14,7 @@ class BankAccount {
 			cin >> x;
 			cout << endl;
 			balance += x;
-			cout << "Balance on your account is " << balance << endl;
+			cout << "Balance on your account is " << balance << " $ " << endl;
 		}
 		void withdraw(int y){
 						
@@ -22,7 +22,7 @@ class BankAccount {
 			cin >> y;
 			cout << endl;
 			balance -= y;
-			cout << "Balance on your account is " << balance << endl;
+			cout << "Balance on your account is " << balance << " $ " << endl;
 		}
 		BankAccount(){
 			string nm = "Anonymous";
@@ -78,7 +78,7 @@ class Savings: public BankAccount {
 					"$ maximum from this account. Transaction terminated." << endl;
 				balance += y;	
 			}
-			cout << "Balance on your account is " << balance << endl;
+			cout << "Balance on your account is " << balance << " $ " << endl;
 		}
 		
 	private:
@@ -106,7 +106,7 @@ class Checking : public BankAccount {
 			balance -= overdraft_fee;
 			//cout << " Your balance now is "<< balance << endl;
 			}
-			cout << " Your balance now is "<< balance << endl;
+			cout << " Your balance now is "<< balance << " $ " << endl;
 		}
 		
 	private:
@@ -154,7 +154,9 @@ int main(){
 	cout << " " << endl;
 	if (accnt == "Savings" || accnt == "savings") {
 		//Savings newS (name, phone);
-		cout << "Savings account created. ";
+		cout << "				*************************************************" << endl;
+		cout << "					*** Savings account created. *** 			"<< endl;
+		cout << "  				*************************************************" << endl;
 		
 		do {
 	cout << " " << endl;
@@ -193,7 +195,9 @@ int main(){
 		
 	} else if (accnt == "Checking" || accnt == "checking") {
 		//Checking newC (name, phone);
-		cout << "Checking account created. ";
+		cout << "  			*************************************************" << endl;
+		cout << "				*** Checking account created. ***		 	 "<< endl;
+		cout << "  			*************************************************" << endl;
 		
 		do {
 	cout << " " << endl;
